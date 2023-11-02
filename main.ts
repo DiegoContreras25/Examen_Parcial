@@ -30,18 +30,7 @@ await mongoose.connect(
 );
 
 const app = express();
-app.use(express.json());
-app
-  .get("/getProducts", getProducts)
-  .get("/getClient", getClient)
-  .get("/getInvoice/:id", getInvoice)
-  //no furulan los deletes
-  .delete("/deleteProducts/", deleteProducts)
-  .delete("/deleteClient/", deleteClient)
-  .post("/addClient", addClient)
-  //no pilla datos opcionales, revisar contructor
-  .post("/addProducts", addProducts)
-  .post("/addInvoice", addInvoice);
+
 app.listen(3000, () => {
   console.log("Server listening on port 3000");
 });
