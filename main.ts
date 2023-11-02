@@ -1,15 +1,6 @@
 import express from "npm:express@4.18.2";
 import mongoose from "npm:mongoose@7.6.3";
 
-import getProducts from "./getProducts.ts";
-import getClient from "./getClient.ts";
-import getInvoice from "./getInvoice.ts";
-import deleteProducts from "./deleteProducts.ts";
-import deleteClient from "./deleteClient.ts";
-import addProducts from "./addProducts.ts";
-import addClient from "./addClient.ts";
-import addInvoice from "./addInvoice.ts";
-
 import { load } from "https://deno.land/std@0.204.0/dotenv/mod.ts";
 
 const env = await load();
