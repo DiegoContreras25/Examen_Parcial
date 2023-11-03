@@ -4,6 +4,7 @@ import mongoose from "npm:mongoose@7.6.3";
 import getMonumentos from "./getMonumentos.ts";
 import deleteMonumentos from "./deleteMonumentos.ts";
 import addMonumentos from "./addMonumentos.ts";
+import updateMonumentos from "./updateMonument.ts";
 
 import { load } from "https://deno.land/std@0.204.0/dotenv/mod.ts";
 
@@ -31,7 +32,8 @@ app.use(express.json());
 app
   .get("/getMonumentos", getMonumentos)
   .delete("/deleteMonumentos/", deleteMonumentos)
-  .post("/addMonumentos", addMonumentos);
+  .post("/addMonumentos", addMonumentos)
+  .put("/updateMonumentos", updateMonumentos);
 
 app.listen(3000, () => {
   console.log("Server listening on port 3000");
