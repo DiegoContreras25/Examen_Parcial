@@ -9,18 +9,22 @@ import updateMonumentos from "./updateMonument.ts";
 import { load } from "https://deno.land/std@0.204.0/dotenv/mod.ts";
 
 const env = await load();
-const mongo_usr: string = env["MONGO_USR"];
-const mongo_pwd: string = env["MONGO_PWD"];
-const mongo_uri: string = env["MONGO_URI"];
-const db_name: string = env["DB_NAME"];
+const mongo_usr: string | undefined = env.MONGO_USR ||
+  Deno.env.get("MONGO_USR");
+const mongo_pwd: string | undefined = env.MONGO_PWD ||
+  Deno.env.get("MONGO_PWD");
+const mongo_uri: string | undefined = env.MONGO_URI ||
+  Deno.env.get("MONGO_URI");
+const db_name: string | undefined = env.DB_NAME || Deno.env.get("DB_NAME");
 
-//https://wide-tuna-41-8xd2vsmsg0ah.deno.dev/
-//CTRL+SHIF+P ->deno initialize
-//CTRL+SHIF+P ->deno initialize
 if (!mongo_usr || !mongo_pwd || !mongo_uri || !db_name) {
   console.log("Missing env values");
   Deno.exit(1);
 }
+
+//https://wide-tuna-41-8xd2vsmsg0ah.deno.dev/
+//CTRL+SHIF+P ->deno initialize
+//CTRL+SHIF+P ->deno initialize
 
 await mongoose.connect(
   `mongodb+srv://${mongo_usr}:${mongo_pwd}@${mongo_uri}/${db_name}?retryWrites=true&w=majority`,
